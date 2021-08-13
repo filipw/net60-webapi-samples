@@ -51,6 +51,8 @@ app.MapDelete("/contacts/{id}", [Authorize("contacts.manage")] async (ContactSer
 // + different way of expressing that authorization is required 
 app.MapGet("/current-user", (ClaimsPrincipal principal) => Results.Ok(principal.Claims.ToDictionary(c => c.Type, c => c.Value))).RequireAuthorization();
 
+// todo: add configuration binding
+
 app.Run();
 
 public record Contact(int ContactId, string Name, string Address, string City);
